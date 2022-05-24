@@ -3,9 +3,16 @@ name = "hexlet-code"
 version = "0.1.0"
 description = ""
 authors = ["Anna Shchankina"]
+repository = 'https://github.com/AnnaCanada/python-project-lvl2.git'
+packages = [
+  { include = "gendiff" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+
+[tool.poetry.scripts]
+gendiff = "gendiff.scripts.gendiff:parse_cli_arguments"
 
 [tool.poetry.dev-dependencies]
 
