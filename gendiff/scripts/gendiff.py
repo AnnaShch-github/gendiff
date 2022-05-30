@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import argparse
+from gendiff import generate_diff
 
 
 def parse_cli_arguments():
@@ -11,5 +12,8 @@ def parse_cli_arguments():
     args = parser.parse_args()
     return args
 
+
 if __name__ == '__main__':
+    print("hello world")
+    print(generate_diff())
     parse_cli_arguments()

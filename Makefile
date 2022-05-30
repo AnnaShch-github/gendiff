@@ -8,7 +8,7 @@ publish:
 	poetry run --dry-run
 
 package-install:
-	python3 -m pip install --user dist/*.whl
+	python3 -m pip install dist/*.whl --force-reinstall
 
 lint:
 	poetry run flake8 gendiff
