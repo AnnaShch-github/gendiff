@@ -15,3 +15,6 @@ lint:
 
 uninstall:
 	pip uninstall hexlet-code
+
+test:
+	poetry run pytest
