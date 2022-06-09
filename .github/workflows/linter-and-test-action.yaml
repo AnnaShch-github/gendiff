@@ -55,6 +55,6 @@ jobs:
           make install
       - uses: paambaati/codeclimate-action@v2.7.4
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.TEST_REPORTER_ID }}
+          CC_TEST_REPORTER_ID: c5035f5a8c832430bd87f0506c3185aec3dfa608e3da10542a7380a58a0e0467
         with:
           coverageCommand: make test-coverage
