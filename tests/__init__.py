@@ -1,5 +1,6 @@
-from tests.expected import flat_json
+from tests.expected import flat_json, flat_yaml
 
 __all__ = [
-    flat_json
+    flat_json,
+    flat_yaml
 ]
