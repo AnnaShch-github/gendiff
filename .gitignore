@@ -4,3 +4,5 @@ gendiff/__pycache__/
 gendiff/scripts/__pycache__/
 .venv
 tests/__pycache__/
+poetry.lock
+coverage.xml
