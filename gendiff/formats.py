@@ -1,42 +1,55 @@
-EXTENDED_SPACE = '  '
+EXTENDED_SPACE = ' '
+COUNT_INDENT = 4
+
+
+def get_open_indent(depth):
+    open_indent = EXTENDED_SPACE * (COUNT_INDENT * depth - 2)
+    return open_indent
+
+
+def get_close_indent(depth):
+    close_indent = EXTENDED_SPACE * (COUNT_INDENT * (depth - 1))
+    return close_indent
 
 
 def stylish(tree, depth):
     result = ['{']
-    current_indent = EXTENDED_SPACE * depth
+    open_indent = get_open_indent(depth)
+    close_indent = get_close_indent(depth)
     for node in tree:
-        value = get_nested_value(node.get('value'), depth)
+        key = node.get('key')
+        value = get_nested_value(node.get('value'), depth + 1)
         if node.get('status') == 'ADDED':
-            result.append('{EXTENDED_SPACE}{symbol} {key}: {value}'.format(
-                EXTENDED_SPACE=current_indent, symbol='+', key=node.get('key'),
+            result.append('{current_indent}{symbol} {key}: {value}'.format(
+                current_indent=open_indent, symbol='+', key=key,
                 value=value
             ))
         elif node.get('status') == 'DELETED':
-            result.append('{EXTENDED_SPACE}{symbol} {key}: {value}'.format(
-                EXTENDED_SPACE=current_indent, symbol='-', key=node.get('key'),
+            result.append('{current_indent}{symbol} {key}: {value}'.format(
+                current_indent=open_indent, symbol='-', key=key,
                 value=value
             ))
         elif node.get('status') == 'UNCHANGED':
-            result.append('{EXTENDED_SPACE}{symbol} {key}: {value}'.format(
-                EXTENDED_SPACE=current_indent, symbol=' ', key=node.get('key'),
+            result.append('{current_indent}{symbol} {key}: {value}'.format(
+                current_indent=open_indent, symbol=' ', key=key,
                 value=value
             ))
         elif node.get('status') == 'NESTED':
-            result.append('{EXTENDED_SPACE}{symbol} {key}: {value}'.format(
-                EXTENDED_SPACE=current_indent, symbol=' ', key=node.get('key'),
+            result.append('{current_indent}{symbol} {key}: {value}'.format(
+                current_indent=open_indent, symbol=' ', key=key,
                 value=stylish(node.get('value'), depth + 1)
             ))
         else:
-            result.append('{EXTENDED_SPACE}{symbol} {key}: {value}'.format(
-                EXTENDED_SPACE=current_indent, symbol='-', key=node.get('key'),
+            result.append('{current_indent}{symbol} {key}: {value}'.format(
+                current_indent=open_indent, symbol='-', key=key,
                 value=value
             ))
-            result.append('{EXTENDED_SPACE}{symbol} {key}: {value}'.format(
-                EXTENDED_SPACE=current_indent, symbol='+', key=node.get('key'),
+            result.append('{current_indent}{symbol} {key}: {value}'.format(
+                current_indent=open_indent, symbol='+', key=key,
                 value=get_nested_value(node.get('value2'), depth + 1)
             ))
-    result.append('{EXTENDED_SPACE}{symbol}'.format(
-        EXTENDED_SPACE=EXTENDED_SPACE * (depth - 1), symbol='}'
+    result.append('{current_indent}{symbol}'.format(
+        current_indent=close_indent, symbol='}'
     ))
     return '\n'.join(result)
 
@@ -53,15 +66,17 @@ def unify_values(value):
 
 
 def get_nested_value(smth, depth):
+    open_indent = get_open_indent(depth)
+    close_indent = get_close_indent(depth)
     if isinstance(smth, dict):
         result = ["{"]
         for key, value in smth.items():
             result.append('{EXTENDED_SPACE}{symbol} {key}: {value}'.format(
-                EXTENDED_SPACE=EXTENDED_SPACE * depth, symbol=' ', key=key,
+                EXTENDED_SPACE=open_indent, symbol=' ', key=key,
                 value=get_nested_value(value, depth + 1)
             ))
         result.append('{EXTENDED_SPACE}{symbol}'.format(
-            EXTENDED_SPACE=EXTENDED_SPACE * depth, symbol='}'
+            EXTENDED_SPACE=close_indent, symbol='}'
         ))
         return '\n'.join(result)
     else:
@@ -70,5 +85,3 @@ def get_nested_value(smth, depth):
 
 def wrapper(list):
     return stylish(list, 1)
-
-
