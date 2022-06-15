@@ -26,25 +26,28 @@ def create_tree(file1, file2):
     for key in keys:
         if key not in file1:
             children = {
-                'status': 'ADDED', 'key': key, 'value': file2[key]
-                }
+                'status': 'ADDED', 'key': key,
+                'value': file2[key]
+            }
         elif key not in file2:
             children = {
-                'status': 'DELETED', 'key': key, 'value': file1[key]
-                }
+                'status': 'DELETED', 'key': key,
+                'value': file1[key]
+            }
         elif file1[key] == file2[key]:
             children = {
-                'status': 'UNCHANGED', 'key': key, 'value': file2[key]
-                }
+                'status': 'UNCHANGED', 'key': key,
+                'value': file2[key]
+            }
         elif isinstance(file1[key], dict) and isinstance(file2[key], dict):
             children = {
-                'status': 'NESTED', 'key': key, 'value': create_tree(file1[key], file2[key])
-                }
+                'status': 'NESTED', 'key': key,
+                'value': create_tree(file1[key], file2[key])
+            }
         else:
             children = {
-                'status': 'CHANGED', 'key': key, 'value': file1[key], 'value2': file2[key],
-                }
+                'status': 'CHANGED', 'key': key,
+                'value': file1[key], 'value2': file2[key],
+            }
         result.append(children)
     return result
-
-
