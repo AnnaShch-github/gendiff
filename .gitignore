@@ -6,3 +6,5 @@ gendiff/scripts/__pycache__/
 tests/__pycache__/
 poetry.lock
 coverage.xml
+.coverage
+assert

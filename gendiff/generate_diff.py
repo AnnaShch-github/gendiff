@@ -2,6 +2,8 @@ import json
 import yaml
 from yaml.loader import FullLoader
 
+from gendiff.formats import wrapper
+
 
 def generate_diff(first_file, second_file):
     if first_file[-5] == '.json':
@@ -14,40 +16,35 @@ def generate_diff(first_file, second_file):
             file1 = yaml.load(fh, Loader=FullLoader)
         with open(second_file) as fh:
             file2 = yaml.load(fh, Loader=FullLoader)
+    result = create_tree(file1, file2)
+    return wrapper(result)
+
+
+def create_tree(file1, file2):
     keys = sorted(list(file1.keys() | file2.keys()))
-    res = ['{']
+    result = []
     for key in keys:
-        unify1 = unify_values(file1.get(key))
-        unify2 = unify_values(file2.get(key))
         if key not in file1:
-            res.append('{indent}{symbol} {key}: {value}'.format(
-                indent='  ', symbol='+', key=key, value=unify2
-            ))
+            children = {
+                'status': 'ADDED', 'key': key, 'value': file2[key]
+                }
         elif key not in file2:
-            res.append('{indent}{symbol} {key}: {value}'.format(
-                indent='  ', symbol='-', key=key, value=unify1
-            ))
+            children = {
+                'status': 'DELETED', 'key': key, 'value': file1[key]
+                }
         elif file1[key] == file2[key]:
-            res.append('{indent}{symbol} {key}: {value}'.format(
-                indent='  ', symbol=' ', key=key, value=unify1
-            ))
-        elif isinstance(key, dict):
-            generate_diff(file1[key], file2[key])
+            children = {
+                'status': 'UNCHANGED', 'key': key, 'value': file2[key]
+                }
+        elif isinstance(file1[key], dict) and isinstance(file2[key], dict):
+            children = {
+                'status': 'NESTED', 'key': key, 'value': create_tree(file1[key], file2[key])
+                }
         else:
-            res.append('{indent}{symbol} {key}: {value}'.format(
-                indent='  ', symbol='-', key=key, value=unify1
-            ))
-            res.append('{indent}{symbol} {key}: {value}'.format(
-                indent='  ', symbol='+', key=key, value=unify2
-            ))
-    res.append('}')
-    return '\n'.join(res)
+            children = {
+                'status': 'CHANGED', 'key': key, 'value': file1[key], 'value2': file2[key],
+                }
+        result.append(children)
+    return result
 
 
-def unify_values(value):
-    if value is True:
-        return 'true'
-    elif value is False:
-        return 'false'
-    else:
-        return value
