@@ -2,10 +2,10 @@ import json
 import yaml
 from yaml.loader import FullLoader
 
-from gendiff.formats import wrapper
+from gendiff.formats import stylish_wrapper
 
 
-def generate_diff(first_file, second_file):
+def generate_diff(first_file, second_file, format='stylish'):
     if first_file[-5] == '.json':
         with open(first_file) as fh:
             file1 = json.load(open(fh))
@@ -17,7 +17,9 @@ def generate_diff(first_file, second_file):
         with open(second_file) as fh:
             file2 = yaml.load(fh, Loader=FullLoader)
     result = create_tree(file1, file2)
-    return wrapper(result)
+    if format == 'stylish':
+        return stylish_wrapper(result)
+    raise TypeError("bad format")
 
 
 def create_tree(file1, file2):

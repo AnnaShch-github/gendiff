@@ -2,20 +2,10 @@ EXTENDED_SPACE = ' '
 COUNT_INDENT = 4
 
 
-def get_open_indent(depth):
-    open_indent = EXTENDED_SPACE * (COUNT_INDENT * depth - 2)
-    return open_indent
-
-
-def get_close_indent(depth):
-    close_indent = EXTENDED_SPACE * (COUNT_INDENT * (depth - 1))
-    return close_indent
-
-
 def stylish(tree, depth):
     result = ['{']
-    open_indent = get_open_indent(depth)
-    close_indent = get_close_indent(depth)
+    open_indent = EXTENDED_SPACE * (COUNT_INDENT * depth - 2)
+    close_indent = EXTENDED_SPACE * (COUNT_INDENT * (depth - 1))
     for node in tree:
         key = node.get('key')
         value = get_nested_value(node.get('value'), depth + 1)
@@ -66,8 +56,8 @@ def unify_values(value):
 
 
 def get_nested_value(smth, depth):
-    open_indent = get_open_indent(depth)
-    close_indent = get_close_indent(depth)
+    open_indent = EXTENDED_SPACE * (COUNT_INDENT * depth - 2)
+    close_indent = EXTENDED_SPACE * (COUNT_INDENT * (depth - 1))
     if isinstance(smth, dict):
         result = ["{"]
         for key, value in smth.items():
@@ -83,5 +73,5 @@ def get_nested_value(smth, depth):
         return unify_values(smth)
 
 
-def wrapper(list):
-    return stylish(list, 1)
+def stylish_wrapper(final):
+    return stylish(final, 1)
