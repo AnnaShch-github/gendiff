@@ -8,3 +8,4 @@ poetry.lock
 coverage.xml
 .coverage
 assert
+gendiff/formats/__pycache__/

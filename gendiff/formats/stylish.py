@@ -44,17 +44,6 @@ def stylish(tree, depth):
     return '\n'.join(result)
 
 
-def unify_values(value):
-    if value is True:
-        return 'true'
-    elif value is False:
-        return 'false'
-    elif value is None:
-        return 'null'
-    else:
-        return value
-
-
 def get_nested_value(smth, depth):
     open_indent = EXTENDED_SPACE * (COUNT_INDENT * depth - 2)
     close_indent = EXTENDED_SPACE * (COUNT_INDENT * (depth - 1))
@@ -70,8 +59,8 @@ def get_nested_value(smth, depth):
         ))
         return '\n'.join(result)
     else:
-        return unify_values(smth)
+        return smth
 
 
-def stylish_wrapper(final):
-    return stylish(final, 1)
+def stylish_wrapper(tree):
+    return stylish(tree, 1)
