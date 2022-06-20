@@ -29,15 +29,15 @@ python3 -m pip install --user git+https://github.com/AnnaCanada/python-project-l
                         set format of output
 
 ### Demonstration of capabilities of this package:
-Stylish format (default)
+#### Stylish format (default)
 
 https://asciinema.org/a/AnEVE8aBKZ28yVUebiyDqa0IB
 
-Plain format 
+#### Plain format 
 
 https://asciinema.org/a/MgX0RKehKkSUpwN8ZBrNCJxFD
 
-Json format
+#### Json format
 
 https://asciinema.org/a/V7JCdkwGKnrsxABcMTq1qzgOc
 
