@@ -1,5 +1,5 @@
 from gendiff import generate_diff
-from tests import flat_json, flat_yaml, recursion_json, recursion_yaml
+from tests import flat_json, flat_yaml, rec_json, rec_yaml
 
 
 def test_flat_json():
@@ -23,16 +23,16 @@ def test_flat_yml():
 def test_recursion_json():
     verifiable = generate_diff('tests/fixtures/file1_recursion.json',
                                'tests/fixtures/file2_recursion.json')
-    assert verifiable == recursion_json
+    assert verifiable == rec_json()
 
 
 def test_recursion_yaml():
     verifiable = generate_diff('tests/fixtures/file1_recursion.yaml',
                                'tests/fixtures/file2_recursion.yaml')
-    assert verifiable == recursion_yaml
+    assert verifiable == rec_yaml()
 
 
 def test_recursion_yml():
     verifiable = generate_diff('tests/fixtures/file1_recursion.yml',
                                'tests/fixtures/file2_recursion.yml')
-    assert verifiable == recursion_yaml
+    assert verifiable == rec_yaml()

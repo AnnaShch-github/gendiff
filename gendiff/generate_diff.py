@@ -11,7 +11,7 @@ def generate_diff(first_file, second_file, format='stylish'):
     # Function reads the data and return the difference between them
     if first_file[-5] == '.json':
         with open(first_file) as f1:
-            file1 = json.load(open(f1))
+            file1 = json.load(f1)
         with open(second_file) as f2:
             file2 = json.load(open(f2))
     else:
