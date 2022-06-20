@@ -1,12 +1,13 @@
-from tests.expected import flat_json, flat_yaml, recursion_json, recursion_yaml, plain_recursive_json, plain_flat_json, json_recursive_json, json_flat_json
+from tests.expected import flat_json, flat_yaml, rec_json, rec_yaml,\
+    plain_rec_json, plain_flat_json, json_rec_json, json_flat_json
 
 __all__ = [
     flat_json,
     flat_yaml,
-    recursion_json,
-    recursion_yaml,
-    plain_recursive_json,
+    rec_json,
+    rec_yaml,
+    plain_rec_json,
     plain_flat_json,
-    json_recursive_json,
+    json_rec_json,
     json_flat_json
 ]

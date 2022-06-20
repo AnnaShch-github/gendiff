@@ -14,7 +14,7 @@ flat_yaml = """{
   + timeout: 20
   + verbose: true
 }"""
-recursion_json = '''{
+rec_json = '''{
     common: {
       + follow: false
         setting1: Value 1
@@ -27,7 +27,7 @@ recursion_json = '''{
         }
         setting6: {
             doge: {
-              - wow: 
+              - wow:
               + wow: so much
             }
             key: value
@@ -58,7 +58,7 @@ recursion_json = '''{
         fee: 100500
     }
 }'''
-recursion_yaml = '''{
+rec_yaml = '''{
     common: {
       + follow: false
         setting1: Value 1
@@ -71,7 +71,7 @@ recursion_yaml = '''{
         }
         setting6: {
             doge: {
-              - wow: 
+              - wow:
               + wow: so much
             }
             key: value
@@ -103,7 +103,7 @@ recursion_yaml = '''{
     }
 }'''
 
-plain_recursive_json = '''Property 'common.follow' was added with value: false
+plain_rec_json = '''Property 'common.follow' was added with value: false
 Property 'common.setting2' was removed
 Property 'common.setting3' was updated. From true to null
 Property 'common.setting4' was added with value: 'blah blah'
@@ -120,7 +120,7 @@ Property 'proxy' was removed
 Property 'timeout' was updated. From 50 to 20
 Property 'verbose' was added with value: true'''
 
-json_recursive_json = '''[
+json_rec_json = '''[
     {
         "status": "NESTED",
         "key": "common",
