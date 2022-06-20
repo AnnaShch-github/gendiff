@@ -2,30 +2,35 @@ import json
 import yaml
 from yaml.loader import FullLoader
 
-from gendiff.formats.plain import plain_wrapper
-from gendiff.formats.stylish import stylish_wrapper
+from gendiff.formats.json import get_json_format
+from gendiff.formats.plain import get_plain_format
+from gendiff.formats.stylish import get_stylish_format
 
 
 def generate_diff(first_file, second_file, format='stylish'):
+    # Function reads the data and return the difference between them
     if first_file[-5] == '.json':
-        with open(first_file) as fh:
-            file1 = json.load(open(fh))
-        with open(second_file) as fh:
-            file2 = json.load(open(fh))
+        with open(first_file) as f1:
+            file1 = json.load(open(f1))
+        with open(second_file) as f2:
+            file2 = json.load(open(f2))
     else:
-        with open(first_file) as fh:
-            file1 = yaml.load(fh, Loader=FullLoader)
-        with open(second_file) as fh:
-            file2 = yaml.load(fh, Loader=FullLoader)
+        with open(first_file) as f1:
+            file1 = yaml.load(f1, Loader=FullLoader)
+        with open(second_file) as f2:
+            file2 = yaml.load(f2, Loader=FullLoader)
     result = create_tree(file1, file2)
     if format == 'stylish':
-        return stylish_wrapper(result)
+        return get_stylish_format(result)
     if format == 'plain':
-        return plain_wrapper(result)
+        return get_plain_format(result)
+    if format == 'json':
+        return get_json_format(result)
     raise TypeError("bad format")
 
 
 def create_tree(file1, file2):
+    # Build the list of the dictionaries containing analysis of the difference
     keys = sorted(list(file1.keys() | file2.keys()))
     result = []
     for key in keys:
@@ -61,6 +66,7 @@ def create_tree(file1, file2):
 
 
 def unify_values(value):
+    # Function unify boolean values from different formats
     if value is True:
         return 'true'
     elif value is False:

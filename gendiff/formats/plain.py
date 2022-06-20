@@ -1,4 +1,5 @@
 def plain(tree, path):
+    # Function displays the difference describing changes in the text.
     phrase = []
     for i in tree:
         value = i.get('value')
@@ -24,6 +25,7 @@ def plain(tree, path):
 
 
 def get_nested_value(value):
+    # Function converts values.
     if isinstance(value, dict):
         return '[complex value]'
     elif value == 'false':
@@ -38,5 +40,6 @@ def get_nested_value(value):
         return "'{0}'".format(value)
 
 
-def plain_wrapper(tree):
+def get_plain_format(tree):
+    # The main function of the modul
     return plain(tree, [])

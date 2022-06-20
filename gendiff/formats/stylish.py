@@ -3,6 +3,7 @@ COUNT_INDENT = 4
 
 
 def stylish(tree, depth):
+    # Function displays the difference describing changes in the string.
     result = ['{']
     open_indent = EXTENDED_SPACE * (COUNT_INDENT * depth - 2)
     close_indent = EXTENDED_SPACE * (COUNT_INDENT * (depth - 1))
@@ -44,12 +45,13 @@ def stylish(tree, depth):
     return '\n'.join(result)
 
 
-def get_nested_value(smth, depth):
+def get_nested_value(node, depth):
+    # Function converts values.
     open_indent = EXTENDED_SPACE * (COUNT_INDENT * depth - 2)
     close_indent = EXTENDED_SPACE * (COUNT_INDENT * (depth - 1))
-    if isinstance(smth, dict):
+    if isinstance(node, dict):
         result = ["{"]
-        for key, value in smth.items():
+        for key, value in node.items():
             result.append('{EXTENDED_SPACE}{symbol} {key}: {value}'.format(
                 EXTENDED_SPACE=open_indent, symbol=' ', key=key,
                 value=get_nested_value(value, depth + 1)
@@ -59,8 +61,9 @@ def get_nested_value(smth, depth):
         ))
         return '\n'.join(result)
     else:
-        return smth
+        return node
 
 
-def stylish_wrapper(tree):
+def get_stylish_format(tree):
+    # The main function of the modul
     return stylish(tree, 1)

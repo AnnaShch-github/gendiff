@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "hexlet-code"
 version = "0.1.0"
-description = ""
+description = "Second trainig project as a backend webdeveloper"
 authors = ["Anna Shchankina"]
 repository = 'https://github.com/AnnaCanada/python-project-lvl2.git'
 packages = [
