@@ -1,5 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/AnnaCanada/python-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/AnnaCanada/python-project-lvl2/actions)
+### Test and linter workflows
+[![test and linter check](https://github.com/AnnaCanada/python-project-lvl2/actions/workflows/linter-and-test-action.yaml/badge.svg)](https://github.com/AnnaCanada/python-project-lvl2/actions/workflows/linter-and-test-action.yaml)
 ### CodeClimate Maintainability:
 <a href="https://codeclimate.com/github/AnnaCanada/python-project-lvl2/maintainability"><img src="https://api.codeclimate.com/v1/badges/c94c754432fe1379e539/maintainability" /></a>
 ### CodeClimate Test Coverage:
