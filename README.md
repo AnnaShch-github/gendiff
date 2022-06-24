@@ -31,15 +31,15 @@ python3 -m pip install --user git+https://github.com/AnnaCanada/python-project-l
 ### Demonstration of capabilities of this package:
 #### Stylish format (default)
 
-https://asciinema.org/a/AnEVE8aBKZ28yVUebiyDqa0IB
+[![asciicast](https://asciinema.org/a/AnEVE8aBKZ28yVUebiyDqa0IB.svg)](https://asciinema.org/a/AnEVE8aBKZ28yVUebiyDqa0IB)
 
 #### Plain format 
 
-https://asciinema.org/a/MgX0RKehKkSUpwN8ZBrNCJxFD
+[![asciicast](https://asciinema.org/a/MgX0RKehKkSUpwN8ZBrNCJxFD.svg)](https://asciinema.org/a/MgX0RKehKkSUpwN8ZBrNCJxFD)
 
 #### Json format
 
-https://asciinema.org/a/V7JCdkwGKnrsxABcMTq1qzgOc
+[![asciicast](https://asciinema.org/a/V7JCdkwGKnrsxABcMTq1qzgOc.svg)](https://asciinema.org/a/V7JCdkwGKnrsxABcMTq1qzgOc)
 
 
 

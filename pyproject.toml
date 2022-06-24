@@ -2,6 +2,10 @@
 name = "hexlet-code"
 version = "0.1.0"
 description = "Second trainig project as a backend webdeveloper"
+classifiers = [
+    "Topic :: Education",
+    "Programming Language :: Python :: 3"
+]
 authors = ["Anna Shchankina"]
 repository = 'https://github.com/AnnaCanada/python-project-lvl2.git'
 packages = [
