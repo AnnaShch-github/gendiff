@@ -8,7 +8,8 @@ def parse_cli_arguments():
     parser.add_argument('first_file', type=str)
     parser.add_argument('second_file', type=str)
     parser.add_argument(
-        '-f', '--format', help='set format of output', default='stylish'
+        '-f', '--format', help='set format of output',
+        choices=['plain', 'stylish', 'json'], default='stylish'
     )
 
     args = parser.parse_args()
