@@ -1,51 +1,51 @@
 [
     {
-        "status": "NESTED",
+        "type": "NESTED",
         "key": "common",
         "value": [
             {
-                "status": "ADDED",
+                "type": "ADDED",
                 "key": "follow",
                 "value": "false"
             },
             {
-                "status": "UNCHANGED",
+                "type": "UNCHANGED",
                 "key": "setting1",
                 "value": "Value 1"
             },
             {
-                "status": "DELETED",
+                "type": "DELETED",
                 "key": "setting2",
                 "value": 200
             },
             {
-                "status": "CHANGED",
+                "type": "CHANGED",
                 "key": "setting3",
                 "value": "true",
                 "value2": "null"
             },
             {
-                "status": "ADDED",
+                "type": "ADDED",
                 "key": "setting4",
                 "value": "blah blah"
             },
             {
-                "status": "ADDED",
+                "type": "ADDED",
                 "key": "setting5",
                 "value": {
                     "key5": "value5"
                 }
             },
             {
-                "status": "NESTED",
+                "type": "NESTED",
                 "key": "setting6",
                 "value": [
                     {
-                        "status": "NESTED",
+                        "type": "NESTED",
                         "key": "doge",
                         "value": [
                             {
-                                "status": "CHANGED",
+                                "type": "CHANGED",
                                 "key": "wow",
                                 "value": "",
                                 "value2": "so much"
@@ -53,12 +53,12 @@
                         ]
                     },
                     {
-                        "status": "UNCHANGED",
+                        "type": "UNCHANGED",
                         "key": "key",
                         "value": "value"
                     },
                     {
-                        "status": "ADDED",
+                        "type": "ADDED",
                         "key": "ops",
                         "value": "vops"
                     }
@@ -67,22 +67,22 @@
         ]
     },
     {
-        "status": "NESTED",
+        "type": "NESTED",
         "key": "group1",
         "value": [
             {
-                "status": "CHANGED",
+                "type": "CHANGED",
                 "key": "baz",
                 "value": "bas",
                 "value2": "bars"
             },
             {
-                "status": "UNCHANGED",
+                "type": "UNCHANGED",
                 "key": "foo",
                 "value": "bar"
             },
             {
-                "status": "CHANGED",
+                "type": "CHANGED",
                 "key": "nest",
                 "value": {
                     "key": "value"
@@ -92,7 +92,7 @@
         ]
     },
     {
-        "status": "DELETED",
+        "type": "DELETED",
         "key": "group2",
         "value": {
             "abc": 12345,
@@ -102,7 +102,7 @@
         }
     },
     {
-        "status": "ADDED",
+        "type": "ADDED",
         "key": "group3",
         "value": {
             "deep": {

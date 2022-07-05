@@ -9,23 +9,24 @@ def stylish(tree, depth):
     close_indent = EXTENDED_SPACE * (COUNT_INDENT * (depth - 1))
     for node in tree:
         key = node.get('key')
-        value = get_nested_value(node.get('value'), depth + 1)
-        if node.get('status') == 'ADDED':
+        value = format_value(node.get('value'), depth + 1)
+        type = node.get('type')
+        if type == 'ADDED':
             result.append('{current_indent}{symbol} {key}: {value}'.format(
                 current_indent=open_indent, symbol='+', key=key,
                 value=value
             ))
-        elif node.get('status') == 'DELETED':
+        elif type == 'DELETED':
             result.append('{current_indent}{symbol} {key}: {value}'.format(
                 current_indent=open_indent, symbol='-', key=key,
                 value=value
             ))
-        elif node.get('status') == 'UNCHANGED':
+        elif type == 'UNCHANGED':
             result.append('{current_indent}{symbol} {key}: {value}'.format(
                 current_indent=open_indent, symbol=' ', key=key,
                 value=value
             ))
-        elif node.get('status') == 'NESTED':
+        elif type == 'NESTED':
             result.append('{current_indent}{symbol} {key}: {value}'.format(
                 current_indent=open_indent, symbol=' ', key=key,
                 value=stylish(node.get('value'), depth + 1)
@@ -37,7 +38,7 @@ def stylish(tree, depth):
             ))
             result.append('{current_indent}{symbol} {key}: {value}'.format(
                 current_indent=open_indent, symbol='+', key=key,
-                value=get_nested_value(node.get('value2'), depth + 1)
+                value=format_value(node.get('value2'), depth + 1)
             ))
     result.append('{current_indent}{symbol}'.format(
         current_indent=close_indent, symbol='}'
@@ -45,7 +46,7 @@ def stylish(tree, depth):
     return '\n'.join(result)
 
 
-def get_nested_value(node, depth):
+def format_value(node, depth):
     # Function converts values.
     open_indent = EXTENDED_SPACE * (COUNT_INDENT * depth - 2)
     close_indent = EXTENDED_SPACE * (COUNT_INDENT * (depth - 1))
@@ -54,7 +55,7 @@ def get_nested_value(node, depth):
         for key, value in node.items():
             result.append('{EXTENDED_SPACE}{symbol} {key}: {value}'.format(
                 EXTENDED_SPACE=open_indent, symbol=' ', key=key,
-                value=get_nested_value(value, depth + 1)
+                value=format_value(value, depth + 1)
             ))
         result.append('{EXTENDED_SPACE}{symbol}'.format(
             EXTENDED_SPACE=close_indent, symbol='}'

@@ -1,27 +1,27 @@
 [
     {
-        "status": "DELETED",
+        "type": "DELETED",
         "key": "follow",
         "value": "false"
     },
     {
-        "status": "UNCHANGED",
+        "type": "UNCHANGED",
         "key": "host",
         "value": "hexlet.io"
     },
     {
-        "status": "DELETED",
+        "type": "DELETED",
         "key": "proxy",
         "value": "123.234.53.22"
     },
     {
-        "status": "CHANGED",
+        "type": "CHANGED",
         "key": "timeout",
         "value": 50,
         "value2": 20
     },
     {
-        "status": "ADDED",
+        "type": "ADDED",
         "key": "verbose",
         "value": "true"
     }
