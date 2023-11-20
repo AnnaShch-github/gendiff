@@ -7,7 +7,7 @@
 ### CodeClimate Test Coverage:
 <a href="https://codeclimate.com/github/AnnaCanada/python-project-lvl2/test_coverage"><img src="https://api.codeclimate.com/v1/badges/c94c754432fe1379e539/test_coverage" /></a>
 
-This is my first training project as a Python backend developer according to the curriculum of the [Hexlet.io](https://ru.hexlet.io/programs/python).
+This is my second training project as a Python backend developer according to the curriculum of the [Hexlet.io](https://ru.hexlet.io/programs/python).
 
 The package is able to work with both relative and absolute paths to files.
 
